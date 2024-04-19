@@ -1,0 +1,14 @@
+name: 'Regex Check Commits'
+description: 'Block the merge of Pull Requests that contain commits that do not match a given regex pattern.'
+author: 'Ben Gregory'
+
+inputs:
+  regexPattern:
+    description: 'The regular expression pattern to match fixup commits.'
+    required: true
+    type: string
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.regexPattern }}
